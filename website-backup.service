@@ -1,0 +1,20 @@
+[Unit]
+Description=[WEBSITE_NAME] - Backup Service
+After=network.target
+
+[Service]
+WorkingDirectory=/var/www/nuxt-template/backup
+Environment=NODE_ENV=[NODE_ENV]
+Environment=MF_SALT=[MF_SALT]
+Environment=MF_API_KEY=[MF_API_KEY]
+Environment=PANEL_SALT=[PANEL_SALT]
+Environment=PANEL_API_TOKEN=[PANEL_API_TOKEN]
+Environment=BASE_URL=[BASE_URL]
+
+Type=simple
+User=root
+ExecStart=/usr/bin/npm run backup
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

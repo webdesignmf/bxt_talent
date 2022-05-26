@@ -1,0 +1,90 @@
+//layouts transitions
+.layout-enter {
+    opacity: 0;
+    transform: translateX(25vw);
+    will-change: transform opacity;
+}
+.layout-enter-active,
+.layout-leave-active {
+    transition: all 0.3s;
+}
+.layout-leave-active {
+    opacity: 0;
+    transform: translateX(-25vw);
+    will-change: transform opacity;
+}
+//layouts transitions
+//Pages transition
+.page-enter-active,
+.page-leave-active {
+    transition: all 1s;
+}
+.page-enter {
+    opacity: 0;
+    will-change: transform opacity;
+}
+.page-leave-to {
+    opacity: 0;
+    will-change: transform opacity;
+}
+@screen lg{
+    .page-enter {
+        opacity: 0;
+        transform: translateY(-25vw);
+        will-change: transform opacity;
+    }
+    .page-leave-to {
+        opacity: 0;
+        transform: translateY(25vw);
+        will-change: transform opacity;
+    }
+}
+//Pages transition
+
+.fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
+  }
+  .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
+  }
+.fade-down-enter-active {
+    transition: all 1s ease;
+    opacity: 1;
+}
+.fade-down-enter/* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
+    transform: translateY(-100px);
+}
+.fade-up-enter-active, .fade-up-leave-active {
+    transition: all 1s ease;
+    position: absolute;    
+    opacity: 1;
+}
+.fade-up-enter,.fade-up-leave-to/* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
+    transform: translateY(100px);
+}
+img.lazy {
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.8s,height 0.5s;
+}
+img.lazy.upper[lazy='loading'] {
+    opacity: 0;
+    transform: translateY(300px);
+}
+img.lazy.upper.masonry-content[lazy='loading'] {
+    opacity: .5;
+    transform: translateY(300px);
+}
+img[lazy='loading'] {
+    opacity: 0;
+    transform: translateY(0);
+}
+img[lazy='error'] {
+    opacity: 1;
+    transform: translateY(0);
+}
+img[lazy='loaded'] {
+    opacity: 1;
+    transform: translateY(0);
+}

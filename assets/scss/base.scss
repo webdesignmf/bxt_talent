@@ -1,0 +1,34 @@
+
+html,
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+* {
+    outline: 0 !important;
+}
+.container {
+    @apply mx-auto;
+}
+
+.svg-inline--fa.fa-w-14 {
+    width: 0.875em;
+}
+.svg-inline--fa {
+    display: inline-block;
+    font-size: inherit;
+    height: 1em;
+    overflow: visible;
+    vertical-align: -0.125em;
+}
+svg:not(:root).svg-inline--fa {
+    overflow: visible;
+}
+.section-title{
+    @apply text-2xl text-black py-2 font-bold tracking-tight uppercase;
+}
+.observer-container {
+    @apply relative w-full h-4 bg-white;
+}
+.wrapper-opacity{
+    @apply opacity-0;
+}
