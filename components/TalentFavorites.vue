@@ -33,8 +33,8 @@ export default {
         cover() {
             return {
                 src: this.talent.cover,
-                error: '/img/talent_cover_error.png',
-                loading: '/img/talent_cover_error.png'
+                error: '/general/talent_cover_error.png',
+                loading: '/general/talent_cover_error.png'
             }
         }
     },

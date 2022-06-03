@@ -4,16 +4,17 @@
             <global-loading v-if="loading" />
         </transition>
         <custom-menu />
-        <Nuxt keep-alive />
+        <Nuxt class="page" />
         <custom-footer />
     </div>
 </template>
 <script>
 import { mapState } from 'vuex'
+import AOS from 'aos'
 import CustomMenu from '~/components/CustomMenu'
 import CustomFooter from '~/components/CustomFooter'
 import GlobalLoading from '~/components/GlobalLoading'
-
+import 'aos/dist/aos.css'
 export default {
     middleware: ['routeObserver'],
     components: {
@@ -48,6 +49,8 @@ export default {
         }
     },
     mounted() {
+        // eslint-disable-next-line no-undef
+        AOS.init()
         const favorites = window.localStorage.getItem('favorites')
         if (favorites) {
             this.$store.dispatch('talents/initFavorites', JSON.parse(favorites))
@@ -56,14 +59,25 @@ export default {
 }
 </script>
 <style lang="scss">
-.layout-default {
-    @apply grid grid-cols-1 min-h-fullv max-w-full;
-    grid-template-rows: auto 1fr auto;
+body {
+    @apply bg-dark;
+    overflow: overlay;
 }
-@screen lg {
-    .layout-default {
-        @apply grid grid-cols-1 min-h-fullv max-w-full;
-        grid-template-rows: 1fr auto;
+.layout-default {
+    @apply grid grid-rows-2 min-h-fullv max-w-full;
+    grid-template-rows: 0 1fr auto;
+    .navbar {
+        z-index: 2;
+    }
+    .page {
+        z-index: 1;
+        padding-top: 93px; // mobile navbar height
+        @screen lg {
+            padding-top: 93px; // desktop navbar height
+        }
+    }
+    .footer {
+        z-index: 1;
     }
 }
 </style>

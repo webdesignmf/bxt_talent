@@ -22,14 +22,14 @@ export default ({ app }, inject) => {
                 loading:
                     'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNsXAEAAbABK2U9m/MAAAAASUVORK5CYII=',
                 src: url,
-                error: '/img/talent_cover_error.png'
+                error: '/general/talent_cover_error.png'
             }
         } else {
             return {
                 loading:
                     'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNsXAEAAbABK2U9m/MAAAAASUVORK5CYII=',
                 src: `${baseUrl}${url}`,
-                error: '/img/talent_cover_error.png'
+                error: '/general/talent_cover_error.png'
             }
         }
     })

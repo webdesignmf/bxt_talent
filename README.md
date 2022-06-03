@@ -1,4 +1,4 @@
-# nuxt-template
+# bxt_talent
 
 ## Build Setup
 

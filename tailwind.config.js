@@ -12,7 +12,8 @@ module.exports = {
                     min: '0px',
                     max: '639px'
                 },
-                xxl: '1367px'
+                xxl: '1367px',
+                xxxl: '1650px'
             },
             textColor: {
                 black: '#0F0F0F',
@@ -30,7 +31,8 @@ module.exports = {
                 secondary: '#E7E7E7',
                 forms: '#EDEDED',
                 alternative: '#B6B6B6',
-                danger: '#C81D25'
+                danger: '#C81D25',
+                dark: '#0D0D0D'
             },
             backgroundOpacity: {
                 90: '90%'

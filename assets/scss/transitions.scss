@@ -30,13 +30,11 @@
 @screen lg{
     .page-enter {
         opacity: 0;
-        transform: translateY(-25vw);
-        will-change: transform opacity;
+        will-change: opacity;
     }
     .page-leave-to {
         opacity: 0;
-        transform: translateY(25vw);
-        will-change: transform opacity;
+        will-change: opacity;
     }
 }
 //Pages transition

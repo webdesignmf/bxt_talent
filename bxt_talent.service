@@ -1,0 +1,20 @@
+[Unit]
+Description=BXT Talent - Primary Service
+After=network.target
+
+[Service]
+WorkingDirectory=/var/www/bxt_talent/production
+Environment=NODE_ENV=production
+Environment=MF_SALT=ea95819e3b42557aab53d19255d2793bcb4d8a043dcebc77eb4ac26816145b51c0bee98bb3727d713e3725cd2fdd266fd091544c339c08f85475ec64baa4131e
+Environment=MF_API_KEY=2094re01xkjlffisuo929lmfavyapp
+Environment=PANEL_SALT=0lQ2LVsXt72Jwz09wbWUkwF1iboVgnvftAB33lP4zKDRPy0R9MXsNHlgiJtJLel1oUXNThvchbxy83T2YhDYC2KxuWTdOMT1x24S
+Environment=PANEL_API_TOKEN=FrAczTzMRhfIdnqcTSxevnn1YoZMtnsmJu6pDHGr
+Environment=BASE_URL=https://bxt.managerfashion.net
+
+Type=simple
+User=root
+ExecStart=/usr/bin/npm run production
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
