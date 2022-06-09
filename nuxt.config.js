@@ -8,7 +8,7 @@ export default {
     publicRuntimeConfig: {},
     privateRuntimeConfig: {
         BASE_URL:
-            process.env.BASE_URL || 'https://website_name.managerfashion.net',
+            process.env.BASE_URL || 'http://localhost:8000',
         MF_SALT: process.env.MF_SALT,
         MF_API_KEY: process.env.MF_API_KEY,
         PANEL_SALT: process.env.PANEL_SALT,
@@ -98,7 +98,7 @@ export default {
      */
     axios: {
         baseURL:
-            process.env.BASE_URL || 'https://website_name.managerfashion.net'
+            process.env.BASE_URL || 'http://localhost:8000'
     },
     /*
      ** Tailwind module configuration

@@ -125,7 +125,7 @@ export default {
             menu: false,
             routes: {
                 left: ['actors', 'influencers', 'experts', 'people'],
-                right: ['blog', 'about_us', 'gets_couted', 'contact']
+                right: ['blog', 'about_us', 'get_scouted', 'contact']
             }
         }
     },

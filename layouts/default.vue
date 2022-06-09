@@ -50,7 +50,7 @@ export default {
     },
     mounted() {
         // eslint-disable-next-line no-undef
-        AOS.init()
+        AOS.init({ once: true })
         const favorites = window.localStorage.getItem('favorites')
         if (favorites) {
             this.$store.dispatch('talents/initFavorites', JSON.parse(favorites))

@@ -116,7 +116,7 @@ export default {
             slideLaunched: false,
             baseUrl:
                 process.env.BASE_URL ||
-                'https://website_name.managerfashion.net'
+                'http://localhost:8000'
         }
     },
     computed: {
