@@ -33,7 +33,7 @@ export default {
     @apply py-6 px-4;
     border-top: 2px solid #fff;
     &--socials {
-        @apply flex justify-center items-center gap-x-2 mb-4;
+        @apply flex justify-center items-center gap-x-2 mb-4 select-none;
     }
     &--infos {
         @screen lg {

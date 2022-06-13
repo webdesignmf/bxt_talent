@@ -25,7 +25,7 @@ export const actions = {
             })
             context.commit('SET_BLOG', {
                 type,
-                blog: response.data
+                blog: response.data.data
             })
         } catch (error) {
             return Promise.reject(error)

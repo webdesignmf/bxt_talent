@@ -187,7 +187,7 @@ export default {
         }
     }
     &--desktop {
-        @apply hidden py-4 px-8 items-center gap-x-12 bg-dark;
+        @apply hidden py-4 px-8 items-center gap-x-12 bg-dark select-none;
         grid-template-columns: 1fr auto 1fr;
         z-index: 9998;
         &__logo {

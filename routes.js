@@ -50,7 +50,7 @@ export default [
         component: Blog
     },
     {
-        route: '/blog/:id/:slug',
+        route: '/blog/:slug',
         component: BlogPost
     },
     {

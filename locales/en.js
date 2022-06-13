@@ -21,6 +21,9 @@ export default {
         contact: '/en/contact',
         favorites: '/en/favorites'
     },
+    blog: {
+        title: 'Blog'
+    },
     about: {
         title: 'About Us',
         text: `

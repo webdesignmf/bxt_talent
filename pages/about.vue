@@ -35,7 +35,7 @@ export default {
 .about {
     @apply px-6 pb-8;
     &--title {
-        @apply mt-8 mb-5 text-white lowercase font-semibold;
+        @apply mt-8 mb-5 text-white lowercase font-semibold select-none cursor-default;
         font-size: 32px;
     }
     &--text {
