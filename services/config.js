@@ -8,7 +8,7 @@ export function config(type, token) {
     }
 }
 const panel = axios.create({
-    baseURL: process.env.BASE_URL || 'http://localhost:8000'
+    baseURL: process.env.BASE_URL || 'https://bxt.managerfashion.net'
 })
 const integration = axios.create({
     baseURL: 'https://integration.managerfashion.net'
