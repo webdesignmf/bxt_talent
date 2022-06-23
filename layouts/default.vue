@@ -3,9 +3,17 @@
         <transition name="fade" mode="out-in">
             <global-loading v-if="loading" />
         </transition>
+        <transition name="fade" mode="out-in">
+            <initial-loading v-if="initialLoading" />
+        </transition>
         <custom-menu />
         <Nuxt class="page" />
         <custom-footer />
+        <style v-if="initialLoading">
+            body {
+                overflow: hidden;
+            }
+        </style>
     </div>
 </template>
 <script>
@@ -14,20 +22,23 @@ import AOS from 'aos'
 import CustomMenu from '~/components/CustomMenu'
 import CustomFooter from '~/components/CustomFooter'
 import GlobalLoading from '~/components/GlobalLoading'
+import InitialLoading from '~/components/InitialLoading'
 import 'aos/dist/aos.css'
 export default {
     middleware: ['routeObserver'],
     components: {
         CustomMenu,
         CustomFooter,
-        GlobalLoading
+        GlobalLoading,
+        InitialLoading
     },
     data() {
         return {}
     },
     computed: {
         ...mapState({
-            loading: (state) => state.loading
+            loading: (state) => state.loading,
+            initialLoading: (state) => state.initialLoading
         })
     },
     watch: {
@@ -49,6 +60,7 @@ export default {
         }
     },
     mounted() {
+        this.$store.dispatch('setInitialLoading', false)
         // eslint-disable-next-line no-undef
         AOS.init({ once: true })
         const favorites = window.localStorage.getItem('favorites')
@@ -60,11 +72,11 @@ export default {
 </script>
 <style lang="scss">
 body {
-    @apply bg-dark;
+    @apply bg-dark w-full-v;
     overflow: overlay;
 }
 .layout-default {
-    @apply grid grid-rows-2 min-h-fullv max-w-full;
+    @apply grid grid-rows-2 min-h-fullv w-full-v overflow-hidden;
     grid-template-rows: 0 1fr auto;
     .navbar {
         z-index: 2;

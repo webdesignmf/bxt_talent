@@ -1,163 +1,136 @@
 <template>
-    <div class="favoritos">
-        <transition
-            appear
-            :css="false"
-            @before-enter="$transitionBeforeEnter"
-            @enter="$transitionEnter"
+    <div class="favoritesp">
+        <div
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            class="favoritesp--title anchorTitle"
         >
-            <section class="casting">
-                <transition-group
-                    v-if="Object.keys(talents).length > 0"
-                    name="fade-up"
-                    class="talent-list"
-                    tag="div"
-                >
-                    <talent-favorites
-                        v-for="(talent, index) in talents"
-                        :key="`talent-${talent.id}-${index}`"
-                        :talent="talent"
-                    />
-                </transition-group>
-                <div
-                    v-else
-                    :class="{
-                        'section-title': true,
-                        error: invalid
-                    }"
-                >
-                    Não há modelos selecionados
-                </div>
-                <form @submit.prevent="validate">
-                    <h1 class="section-title">ENVIAR CASTING POR EMAIL</h1>
-                    <div class="float-label">
-                        <input
-                            id="name"
-                            v-model="$v.form.name.$model"
-                            type="text"
-                            name="name"
-                            :disabled="disabled"
-                            :class="{
-                                input: true,
-                                danger: $v.form.name.$error
-                            }"
-                            @keydown.enter="$event.target.blur()"
-                        />
-                        <label
-                            :class="{
-                                'input-label': true,
-                                active: form.name
-                            }"
-                            for="name"
-                        >
-                            NOME COMPLETO
-                        </label>
-                    </div>
-
-                    <div class="float-label">
-                        <input
-                            id="phone"
-                            v-model="$v.form.phone.$model"
-                            type="tel"
-                            name="phone"
-                            :disabled="disabled"
-                            :class="{
-                                input: true,
-                                danger: $v.form.phone.$error
-                            }"
-                            @keydown.enter="$event.target.blur()"
-                        />
-                        <label
-                            :class="{
-                                'input-label': true,
-                                active: form.phone
-                            }"
-                            for="phone"
-                        >
-                            TELEFONE
-                        </label>
-                    </div>
-                    <div class="float-label">
-                        <input
-                            id="email"
-                            v-model="$v.form.email.$model"
-                            type="email"
-                            name="email"
-                            :disabled="disabled"
-                            :class="{
-                                input: true,
-                                danger: $v.form.email.$error
-                            }"
-                            @keydown.enter="$event.target.blur()"
-                        />
-                        <label
-                            :class="{
-                                'input-label': true,
-                                active: form.email
-                            }"
-                            for="email"
-                        >
-                            EMAIL
-                        </label>
-                    </div>
-                    <div v-if="invalid" class="invalid-feedback">
-                        PREENCHA OS CAMPOS OBRIGATÓRIOS
-                    </div>
-                    <div v-if="!sended" class="float-button">
-                        <button
-                            type="submit"
-                            class="btn primary"
-                            :disabled="disabled"
-                        >
-                            <span v-if="!loading">ENVIAR</span>
-                            <span v-if="loading"
-                                >ENVIANDO&nbsp;<font-awesome-icon
-                                    spin
-                                    icon="spinner"
-                            /></span>
-                        </button>
-                    </div>
-                    <div v-else class="success-message">
-                        MENSAGEM ENVIADA&nbsp;
-                        <font-awesome-icon icon="check"></font-awesome-icon>
-                    </div>
-                </form>
-            </section>
-        </transition>
+            {{ $t('favorites.title') }}
+        </div>
+        <transition-group
+            v-if="Object.keys(talents).length > 0"
+            class="favoritesp--list"
+            name="fade"
+            mode="out-in"
+            tag="div"
+            data-aos="fade-up"
+            data-aos-duration="1250"
+            data-aos-anchor=".anchorTitle"
+        >
+            <talent
+                v-for="key in Object.keys(talents)"
+                :key="talents[key].id"
+                :talent="talents[key]"
+                :category="$t('home.talents')"
+            />
+        </transition-group>
+        <div
+            v-else
+            data-aos="fade-up"
+            data-aos-duration="1250"
+            data-aos-anchor=".anchorTitle"
+            class="favoritesp--notalents"
+        >
+            {{ $t('favorites.notalents') }}
+        </div>
+        <div
+            v-if="Object.keys(talents).length > 0"
+            data-aos="fade-up"
+            data-aos-duration="1500"
+            class="favoritesp--title"
+            data-aos-anchor=".anchorTitle"
+        >
+            {{ $t('favorites.budget') }}
+        </div>
+        <div
+            v-if="Object.keys(talents).length > 0"
+            data-aos="fade-up"
+            data-aos-duration="1750"
+            class="favoritesp--form"
+            data-aos-anchor=".anchorTitle"
+        >
+            <input
+                id="name"
+                v-model="$v.form.name.$model"
+                :placeholder="$t('favorites.name')"
+                name="name"
+                :class="{
+                    danger: $v.form.name.$error
+                }"
+                @keydown.enter="$event.target.blur()"
+            />
+            <input
+                id="email"
+                v-model="$v.form.email.$model"
+                :placeholder="$t('favorites.email')"
+                name="email"
+                :class="{
+                    danger: $v.form.email.$error
+                }"
+                @keydown.enter="$event.target.blur()"
+            />
+            <input
+                id="phone"
+                v-model="$v.form.phone.$model"
+                :placeholder="$t('favorites.phone')"
+                name="phone"
+                :class="{
+                    danger: $v.form.phone.$error
+                }"
+                @keydown.enter="$event.target.blur()"
+            />
+            <textarea
+                id="message"
+                v-model="$v.form.message.$model"
+                :placeholder="$t('contact.message')"
+                name="message"
+                :class="{
+                    danger: $v.form.message.$error
+                }"
+                @keydown.enter="$event.target.blur()"
+            />
+        </div>
+        <div
+            v-if="Object.keys(talents).length > 0"
+            data-aos="fade-up"
+            data-aos-duration="2000"
+            class="favoritesp--button"
+            data-aos-anchor=".anchorTitle"
+        >
+            <button v-if="sended">
+                <font-awesome-icon icon="check" />{{ $t('favorites.sended') }}
+            </button>
+            <button v-else-if="sending">
+                <font-awesome-icon icon="spinner" spin />{{
+                    $t('favorites.sending')
+                }}
+            </button>
+            <button v-else @click="validate">
+                {{ $t('favorites.send') }}
+            </button>
+        </div>
     </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
 import { required, email } from 'vuelidate/lib/validators'
+import { mapState } from 'vuex'
+import Talent from '~/components/Talent'
 import url from '~/seo/components.js'
 export default {
+    components: {
+        Talent
+    },
     data() {
         return {
             form: {
                 name: '',
                 email: '',
-                phone: ''
+                phone: '',
+                message: ''
             },
-            loading: false,
-            disabled: false,
-            sended: false,
-            invalid: false,
-            error: false
-        }
-    },
-    validations: {
-        form: {
-            name: {
-                required
-            },
-            email: {
-                required,
-                email
-            },
-            phone: {
-                required
-            }
+            sending: false,
+            sended: false
         }
     },
     computed: {
@@ -165,28 +138,46 @@ export default {
             talents: (state) => state.talents.favorites
         })
     },
+    validations: {
+        form: {
+            name: { required },
+            email: { required, email },
+            phone: { required },
+            message: { required }
+        }
+    },
     methods: {
+        resetForm() {
+            this.$v.$reset()
+            this.form = {
+                name: '',
+                email: '',
+                phone: '',
+                message: ''
+            }
+        },
         async validate() {
-            this.disabled = true
+            const _this = this
             this.$v.$touch()
-            if (this.$v.$invalid || this.talents.length < 1) {
-                this.invalid = true
-                this.disabled = false
-            } else {
-                this.invalid = false
-                this.loading = true
+            if (!this.$v.$invalid) {
+                this.sending = true
                 const data = new FormData()
+                // Form
                 Object.keys(this.form).forEach((key) => {
                     data.append(key, this.form[key])
                 })
+                data.append('favorites', JSON.stringify(this.talents))
                 try {
                     await this.$store.dispatch('favorites', data)
+                    this.sending = false
                     this.sended = true
+                    setTimeout(() => {
+                        _this.resetForm()
+                        _this.sended = false
+                    }, 2000)
                 } catch (error) {
-                    this.loading = false
-                    this.invalid = false
-                    this.error = true
-                    this.disabled = false
+                    console.error(error)
+                    this.sending = false
                 }
             }
         }
@@ -197,7 +188,7 @@ export default {
             return tag
         })
         return {
-            title: 'Favoritos',
+            title: this.$t('favorites.title'),
             meta: [...items]
         }
     }
@@ -205,6 +196,66 @@ export default {
 </script>
 
 <style lang="scss">
-// .favoritos {
-// }
+.favoritesp {
+    .danger {
+        border-color: #f00;
+    }
+    @apply px-6 pb-8;
+    &--title {
+        @apply mt-8 mb-5 text-white lowercase font-semibold select-none cursor-default;
+        font-size: 32px;
+    }
+    &--list {
+        @apply grid grid-cols-2 gap-2;
+    }
+    &--notalents {
+        @apply text-white text-center font-light text-lg text-opacity-75 mt-12 py-10;
+    }
+    &--form {
+        @apply grid grid-cols-1 gap-y-2 text-sm;
+        input,
+        textarea {
+            @apply bg-transparent p-2 text-white;
+            height: 35px;
+            border: 0.5px solid #fff;
+            option {
+                @apply text-black;
+            }
+            &::placeholder,
+            &.empty {
+                @apply font-light lowercase select-none;
+                color: rgba($color: #fff, $alpha: 0.5);
+            }
+        }
+        textarea {
+            height: 96px;
+        }
+    }
+    &--button {
+        @apply mt-4;
+        button {
+            @apply select-none flex justify-center items-center gap-x-3 w-full p-4 bg-white outline-none text-black font-semibold lowercase;
+        }
+    }
+}
+@screen lg {
+    .favoritesp {
+        @apply w-2/3 mx-auto;
+        &--title {
+            @apply text-center;
+        }
+        &--list {
+            @apply grid-cols-4 gap-8;
+        }
+        &--form {
+            @apply mt-12 grid-cols-3 gap-6;
+            textarea {
+                grid-column: 1 / 4;
+            }
+        }
+        &--button {
+            @apply mt-12 w-2/6 mx-auto;
+        }
+    }
+}
 </style>

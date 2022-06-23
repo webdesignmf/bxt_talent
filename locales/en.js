@@ -21,8 +21,28 @@ export default {
         contact: '/en/contact',
         favorites: '/en/favorites'
     },
+    home: {
+        news: 'News',
+        talents: 'talents'
+    },
+    contact: {
+        contact: 'Contact',
+        phone: 'Phone',
+        celphone: 'Celphone',
+        email: 'E-mail',
+        talk_with_us: 'Talk with us',
+        name: 'Name',
+        message: 'Message',
+        sended: 'Sended',
+        sending: 'Sending',
+        send: 'Send'
+    },
+    location: {
+        title: 'Location'
+    },
     blog: {
-        title: 'Blog'
+        title: 'Blog',
+        noposts: 'No posts found!'
     },
     about: {
         title: 'About Us',
@@ -45,6 +65,18 @@ export default {
         eyes: 'Eyes',
         hair: 'Hair',
         upload: 'Upload File',
+        send: 'Send',
+        sending: 'Sending',
+        sended: 'Sended'
+    },
+    favorites: {
+        title: 'Favorites',
+        notalents: 'No favorite talent found!',
+        budget: 'Budget',
+        name: 'Name',
+        email: 'E-mail',
+        phone: 'Phone',
+        message: 'Message',
         send: 'Send',
         sending: 'Sending',
         sended: 'Sended'

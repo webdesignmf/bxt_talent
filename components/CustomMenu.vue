@@ -150,7 +150,7 @@ export default {
 <style lang="scss">
 .navbar {
     &--mobile {
-        @apply fixed w-full left-0 top-0 flex justify-between items-center bg-dark px-6 py-4;
+        @apply fixed w-full-v left-0 top-0 flex justify-between items-center bg-dark px-6 py-4;
         z-index: 9998;
         &__menu {
             @apply fixed left-0 top-0 h-full-v w-full-v bg-dark grid;

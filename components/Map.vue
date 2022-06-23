@@ -32,8 +32,4 @@ export default {
 }
 </script>
 
-<style lang="scss">
-#map {
-    height: 100%;
-}
-</style>
+<style lang="scss"></style>

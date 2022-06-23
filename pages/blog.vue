@@ -1,6 +1,6 @@
 <template>
-    <div class="blog">
-        <div data-aos="fade-up" data-aos-duration="1000" class="blog--title">
+    <div :class="{ blog: true, _home: isHome }">
+        <div class="blog--title">
             {{ $t('blog.title') }}
         </div>
         <div v-if="posts.length > 0" class="blog--posts">
@@ -18,6 +18,7 @@
                 </div>
             </nuxt-link>
         </div>
+        <div v-else class="blog--noposts">{{ $t('blog.noposts') }}</div>
     </div>
 </template>
 
@@ -48,12 +49,24 @@ export default {
         }),
         posts() {
             const locale = this.$i18n.locale
-            return this.allPosts.filter((post) => post.lang === locale)
+            let posts = this.allPosts.filter((post) => post.lang === locale)
+            if (this.isHome) {
+                posts = posts.filter((post, index) => index < 4)
+            }
+            return posts
+        },
+        isHome() {
+            return (
+                this.$route.path === '/en' ||
+                this.$route.path === '/es' ||
+                this.$route.path === '/'
+            )
         }
     },
     mounted() {},
     methods: {},
     head() {
+        if (this.isHome) return
         const items = url.map((tag) => {
             tag.content = this.$route.fullPath
             return tag
@@ -67,10 +80,15 @@ export default {
 </script>
 
 <style lang="scss">
+.blog._home {
+    .blog--title {
+        @apply block mt-0;
+    }
+}
 .blog {
     @apply px-6 pb-8;
     &--title {
-        @apply mt-8 mb-5 text-white lowercase font-semibold select-none cursor-default hidden;
+        @apply mt-8 mb-6 text-white lowercase font-semibold select-none cursor-default hidden;
         font-size: 32px;
         @screen lg {
             @apply block;
@@ -120,6 +138,9 @@ export default {
                 }
             }
         }
+    }
+    &--noposts {
+        @apply text-white text-center font-light text-lg text-opacity-75 mt-12;
     }
 }
 @screen lg {

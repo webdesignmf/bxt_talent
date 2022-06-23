@@ -7,6 +7,7 @@ export const state = () => ({
         mf: '',
         panel: ''
     },
+    initialLoading: true,
     loading: false,
     baseUrl: process.env.BASE_URL,
     locale: ''
@@ -25,6 +26,9 @@ export const mutations = {
     },
     SET_LOADING(state, payload) {
         state.loading = payload
+    },
+    SET_INITIALLOADING(state, payload) {
+        state.initialLoading = payload
     },
     SET_OPTIONS(state, payload) {
         state.options = payload
@@ -64,6 +68,9 @@ export const actions = {
     async getScouted(context, payload) {
         await forms.getScouted(payload)
     },
+    async favorites(context, payload) {
+        await forms.favorites(payload)
+    },
     async getOptions({ commit }, payload) {
         const { data } = await forms.options(payload)
         commit('SET_OPTIONS', data)
@@ -77,5 +84,8 @@ export const actions = {
     },
     setLoading({ commit }, payload) {
         commit('SET_LOADING', payload)
+    },
+    setInitialLoading({ commit }, payload) {
+        commit('SET_INITIALLOADING', payload)
     }
 }

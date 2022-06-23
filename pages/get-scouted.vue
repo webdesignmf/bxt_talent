@@ -433,7 +433,7 @@ export default {
             }
             &::placeholder,
             &.empty {
-                @apply font-light lowercase;
+                @apply font-light lowercase select-none;
                 color: rgba($color: #fff, $alpha: 0.5);
             }
         }
@@ -449,7 +449,7 @@ export default {
     &--button {
         @apply mt-4;
         button {
-            @apply flex justify-center items-center gap-x-3 w-full p-4 bg-white outline-none text-black font-semibold lowercase;
+            @apply select-none flex justify-center items-center gap-x-3 w-full p-4 bg-white outline-none text-black font-semibold lowercase;
         }
     }
 }

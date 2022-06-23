@@ -5,8 +5,7 @@ export const state = () => ({
 })
 export const mutations = {
     SET_TALENTS(state, payload) {
-        state[payload.type] = payload.talents
-        Vue.set(state, 'categoryActive', payload.type)
+        state.list = payload.talents
     },
     SET_TALENT(state, payload) {
         state.profile = payload

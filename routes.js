@@ -43,7 +43,7 @@ export default [
             en: 'contact',
             es: 'contacto'
         },
-        component: Contact
+        component: Home
     },
     {
         route: '/blog',

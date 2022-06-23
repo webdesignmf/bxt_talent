@@ -14,6 +14,18 @@
             <img :src="baseUrl + post.cover" />
         </div>
         <div class="post--text" v-html="post.content" />
+        <div class="post--slides">
+            <div
+                v-for="slide in post.slides"
+                :key="slide.id"
+                :class="{
+                    'post--slides__item': true,
+                    landscape: slide.mode === 'landscape'
+                }"
+            >
+                <img :src="baseUrl + slide.slide_url" />
+            </div>
+        </div>
     </div>
 </template>
 
@@ -99,6 +111,11 @@ export default {
     &--text {
         @apply p-6 font-light text-white;
     }
+    &--slides {
+        @apply px-6 flex justify-center items-center mt-4 mb-8 gap-4 flex-wrap;
+        // &__item {
+        // }
+    }
 }
 @screen lg {
     .post {
@@ -121,6 +138,20 @@ export default {
         }
         &--text {
             @apply py-6 w-3/4 m-auto;
+        }
+        &--slides {
+            @apply px-0 w-3/4 m-auto mt-4 mb-8 gap-8;
+            &__item {
+                @apply relative;
+                width: calc(100% / 3 - 32px);
+                align-self: stretch;
+                &.landscape {
+                    width: calc(100% / 2 - 32px);
+                }
+                & > img {
+                    @apply w-full h-full object-cover;
+                }
+            }
         }
     }
 }
