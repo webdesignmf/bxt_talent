@@ -48,7 +48,7 @@ export default {
 <style lang="scss">
 .book--slider {
     @apply w-full-v;
-    height: 530px;
+    height: 600px;
     .swiper-container,
     .swiper-wrapper,
     .swiper-slide {
@@ -59,7 +59,7 @@ export default {
     }
     .swiper-slide {
         @apply px-3;
-        width: calc(100vw / 3);
+        width: calc(100vw / 4);
         &.landscape {
             width: calc(100vw / 2);
         }

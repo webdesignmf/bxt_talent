@@ -7,7 +7,7 @@
             <initial-loading v-if="initialLoading" />
         </transition>
         <custom-menu />
-        <Nuxt class="page" />
+        <Nuxt keep-alive class="page" />
         <custom-footer />
         <style v-if="initialLoading">
             body {

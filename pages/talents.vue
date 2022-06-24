@@ -16,7 +16,7 @@
             tag="div"
         >
             <talent
-                v-for="talent in talents.filter((t, index) => index < 5)"
+                v-for="talent in preview.filter((t, index) => index < 5)"
                 :key="talent.id"
                 :talent="talent"
                 :category="$route.params.category"
@@ -33,7 +33,7 @@
             tag="div"
         >
             <talent
-                v-for="talent in talents.filter((t, index) => index >= 5)"
+                v-for="talent in preview.filter((t, index) => index >= 5)"
                 :key="talent.id"
                 :talent="talent"
                 :category="$route.params.category"
@@ -52,7 +52,7 @@
             tag="div"
         >
             <talent
-                v-for="talent in talents"
+                v-for="talent in preview"
                 :key="talent.id"
                 :talent="talent"
                 :category="$route.params.category"
@@ -101,6 +101,7 @@ export default {
         },
         category() {
             const categories = {
+                actores: 'actors',
                 actors: 'actors',
                 influencers: 'influencers',
                 experts: 'experts',
@@ -110,6 +111,7 @@ export default {
         },
         idCategory() {
             const categories = {
+                actores: '1',
                 actors: '1',
                 influencers: '2',
                 experts: '3',
@@ -139,7 +141,7 @@ export default {
             return tag
         })
         return {
-            title: this.$t('pages.' + this.$route.params.category),
+            title: this.$t('pages.' + this.category),
             meta: [...items]
         }
     }

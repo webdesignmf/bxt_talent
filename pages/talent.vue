@@ -15,18 +15,25 @@
                     @click="setFavorite(talent)"
                 />
             </transition>
-            <img class="talent--profile__cover--img" :src="talent.cover2" />
+            <img
+                v-if="isValidImage(talent.cover2)"
+                class="talent--profile__cover--img"
+                :src="talent.cover2"
+            />
             <div class="talent--profile__cover--name">
                 {{ talent.name }}
             </div>
         </div>
-        <div class="talent--profile__about">
+        <div v-if="talent.about" class="talent--profile__about">
             {{ talent.about }}
         </div>
-        <div class="talent--profile__video">
+        <div v-if="talent.video.length > 0" class="talent--profile__video">
             <video-gallery :slides="talent.video" />
         </div>
-        <div class="talent--profile__book--mobile">
+        <div
+            v-if="talent.book.length > 0"
+            class="talent--profile__book--mobile"
+        >
             <div
                 v-for="item in talent.book"
                 :key="item.id"
@@ -72,6 +79,11 @@ export default {
     },
     mounted() {},
     methods: {
+        isValidImage(link) {
+            const invalidLink =
+                'https://res.cloudinary.com/managerfashion/image/upload/.jpg'
+            return link !== invalidLink
+        },
         setFavorite(talent) {
             console.log(this.favorites)
             if (!this.favorite) {
@@ -98,6 +110,7 @@ export default {
 .talent {
     &--profile {
         &__cover {
+            min-height: 200px;
             @apply w-full h-auto max-h-fullv relative;
             &--favorite {
                 @apply absolute;
