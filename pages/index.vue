@@ -34,8 +34,9 @@ export default {
             const talents = await store.dispatch('talents/get', {
                 paginate: 1000
             })
+            const talentsOrdered = await store.dispatch('talents/getOrdered')
 
-            await Promise.all([slides, post, talents])
+            await Promise.all([slides, post, talents, talentsOrdered])
         } catch (e) {
             console.log(e)
             error({
@@ -58,7 +59,7 @@ export default {
                     ? state.blog.blog.data.slice(0, 3)
                     : [],
             baseUrl: (state) => state.baseUrl,
-            talents: (state) => state.talents.list
+            talents: (state) => state.talents.news
         }),
         posts() {
             const locale = this.$i18n.locale

@@ -1,11 +1,15 @@
 import Vue from 'vue'
 import talents from '~/services/talents.js'
 export const state = () => ({
-    favorites: {}
+    favorites: {},
+    news: []
 })
 export const mutations = {
     SET_TALENTS(state, payload) {
         state.list = payload.talents
+    },
+    SET_TALENTS_NEWS(state, payload) {
+        state.news = payload.talents
     },
     SET_TALENT(state, payload) {
         state.profile = payload
@@ -43,6 +47,16 @@ export const actions = {
             })
             context.commit('SET_TALENTS', {
                 type,
+                talents: response.data
+            })
+        } catch (error) {
+            return Promise.reject(error)
+        }
+    },
+    async getOrdered(context) {
+        try {
+            const { data: response } = await talents.getOrdered()
+            context.commit('SET_TALENTS_NEWS', {
                 talents: response.data
             })
         } catch (error) {
