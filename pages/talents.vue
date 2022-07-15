@@ -114,8 +114,8 @@ export default {
                 actores: '2',
                 actors: '2',
                 influencers: '3265',
-                experts: '3',
-                people: '4'
+                experts: '4378',
+                people: '4377'
             }
             return categories[this.$route.params.category]
         },
