@@ -13,6 +13,12 @@
                     <img :src="slide.file" />
                 </div>
             </div>
+            <div class="swiper-button-next _cnext">
+                <img src="/desktop/arrow-next.png" />
+            </div>
+            <div class="swiper-button-prev _cprev">
+                <img src="/desktop/arrow-prev.png" />
+            </div>
         </div>
     </div>
 </template>
@@ -38,6 +44,10 @@ export default {
                 autoplay: {
                     delay: 5000,
                     disableOnInteraction: false
+                },
+                navigation: {
+                    nextEl: '._cnext',
+                    prevEl: '._cprev'
                 }
             }
         }
@@ -62,6 +72,15 @@ export default {
         width: calc(100vw / 4);
         &.landscape {
             width: calc(100vw / 2);
+        }
+    }
+    .swiper-button-next,
+    .swiper-button-prev {
+        margin: 0 3rem;
+        height: 25px !important;
+        width: 25px !important;
+        &::after {
+            content: unset !important;
         }
     }
 }

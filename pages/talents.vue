@@ -96,7 +96,7 @@ export default {
         }),
         preview() {
             return this.talents.filter((talent) =>
-                this.hasCategory(talent, this.category)
+                this.hasCategory(talent, this.idCategory)
             )
         },
         category() {
@@ -111,9 +111,9 @@ export default {
         },
         idCategory() {
             const categories = {
-                actores: '1',
-                actors: '1',
-                influencers: '2',
+                actores: '2',
+                actors: '2',
+                influencers: '3265',
                 experts: '3',
                 people: '4'
             }
@@ -130,7 +130,7 @@ export default {
         hasCategory(talent, idCategory) {
             let count = 0
             talent.categories.forEach((category) => {
-                count += category.id === idCategory ? 1 : 0
+                count += category.id === parseInt(idCategory) ? 1 : 0
             })
             return count > 0
         }
